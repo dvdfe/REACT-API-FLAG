@@ -6,27 +6,17 @@ import axios from "axios";
 import Article from "./Article";
 
 const Blog = () => {
+
   const [content, setContent] = useState("");
   const [error, setError] = useState(false);
   const [blogData, setBlogData] = useState([]);
   const [author, setAuthor] = useState("");
-  // const [postData, setPostData] = useState([]);
 
   const getData = () => {
     axios
       .get("http://localhost:3004/articles")
       .then((res) => setBlogData(res.data));
   };
-
-  // const postData = () => {
-  //   axios
-  //     .post("http://localhost:3004/articles")
-  //     .then((res) => setPostData(res.data));
-  // };
-
-  // useEffect(() => {
-  //   postData();
-  // }, []);
 
   useEffect(() => {
     getData();
