@@ -17,6 +17,9 @@ const Article = ({ article }) => {
     });
     return newDate;
   };
+  const handleDelete = () =>{
+    axios.delete("http://localhost:3004/articles/" + article.id)
+  }
 
   const handleEdit = () => {
     const data = {
@@ -52,7 +55,7 @@ const Article = ({ article }) => {
         ) : (
           <button onClick={() => setIsEditing(true)}>Modifier</button>
         )}
-        <button>Supprimer</button>
+        <button onClick={() => handleDelete()}>Supprimer</button>
       </div>
     </div>
   );
