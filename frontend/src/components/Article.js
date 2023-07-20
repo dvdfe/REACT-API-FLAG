@@ -17,9 +17,9 @@ const Article = ({ article }) => {
     });
     return newDate;
   };
-  const handleDelete = () =>{
-    axios.delete("http://localhost:3004/articles/" + article.id)
-  }
+  const handleDelete = () => {
+    axios.delete("http://localhost:3004/articles/" + article.id);
+  };
 
   const handleEdit = () => {
     const data = {
@@ -34,10 +34,14 @@ const Article = ({ article }) => {
   };
 
   return (
-    <div className="article" style={{background: isEditing ? "#f3feff" : "white"}}>
+    <div
+      className="article"
+      style={{ background: isEditing ? "#f3feff" : "white" }}
+    >
       <div className="card-header">
         <h3>{article.author}</h3>
         <em>Posté le {dateFormater(article.date)}</em>
+        {article.updatedDate && (<em>Modifié le {dateFormater(article.updatedDate)}</em>)}
       </div>
       {isEditing ? (
         <textarea
